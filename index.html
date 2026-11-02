@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oasis Lounge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Oasis Lounge</h1>
+        <p>Portfolio & Game Development Hub</p>
+        <a href="https://discord.com/oauth2/authorize?client_id=1566699163142455316&permissions=2147551232&integration_type=0&scope=bot" target="_blank" class="btn">Invite Discord Bot</a>
+    </p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Support & Store</h2>
+            <p>Buy coins and VIP passes using crypto securely.</p>
+            <!-- Replace with your crypto checkout gateway or wallet address link -->
+            <a href="#" class="btn crypto-btn">Pay with Crypto</a>
+        </section>
+    </main>
+
+    <!-- Secret Invisible Trigger (Bottom Right Corner) -->
+    <div id="secret-trigger" title="Access Portal" onclick="revealLogin()"></div>
+
+    <!-- Hidden Login Modal (No Sign Up) -->
+    <div id="login-modal" style="display: none;">
+        <h3>Restricted Access</h3>
+        <form onsubmit="handleLogin(event)">
+            <input type="text" placeholder="Username" required><br><br>
+            <input type="password" placeholder="Key" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
