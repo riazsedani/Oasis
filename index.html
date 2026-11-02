@@ -6,19 +6,27 @@
     <title>Oasis Lounge</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body id="body-theme">
 
     <div class="container">
-        <!-- Profile Header -->
+        <!-- Profile Header / Logo -->
         <div class="profile-header">
             <div id="avatar-box" class="avatar-placeholder">O</div>
-            <h1 id="profile-title">Oasis Lounge</h1>
+            <h1 id="profile-title">Oasis</h1>
             <p id="profile-subtitle"><i>"Curious hands open the wrong doors"</i></p>
         </div>
 
-        <!-- Login Modal -->
-        <div id="login-modal">
+        <!-- PUBLIC VIEW: Only shows Bot Invite initially -->
+        <div id="public-view" class="links-stack">
+            <a href="https://discord.com/oauth2/authorize?client_id=1566699163142455316&permissions=2147551232&integration_type=0&scope=bot" target="_blank" class="link-card discord-card">
+                <i class="fa-brands fa-discord"></i> Invite Oasis Bot
+            </a>
+        </div>
+
+        <!-- LOGIN MODAL (Triggered by the secret power button) -->
+        <div id="login-modal" style="display: none;">
             <h3>System Authentication</h3>
             <form onsubmit="handleLogin(event)">
                 <input type="text" id="user-input" placeholder="Username" required><br>
@@ -27,12 +35,11 @@
             </form>
         </div>
 
-        <!-- Links Stack (Hidden until successful login) -->
-        <div id="main-links" class="links-stack" style="display: none;">
+        <div id="protected-view" class="links-stack" style="display: none;">
             <a href="https://discord.com/oauth2/authorize?client_id=1566699163142455316&permissions=2147551232&integration_type=0&scope=bot" target="_blank" class="link-card">
                 <i class="fa-brands fa-discord"></i> Invite Oasis Bot
             </a>
-            
+    
             <a href="YOUR_CRYPTO_CHECKOUT_LINK" target="_blank" class="link-card crypto-card">
                 <i class="fa-solid fa-coins"></i> Buy Coins & VIP (Crypto)
             </a>
@@ -43,10 +50,11 @@
 
             <a href="https://linktr.ee/notdebra" target="_blank" class="link-card">
                 <i class="fa-brands fa-linktree"></i> Coolest Shit
+            </a>
         </div>
     </div>
 
-    <!-- Secret Power Button Trigger -->
+    <!-- Ultra-Transparent Secret Power Button in Bottom Corner -->
     <div id="secret-trigger" title="System Access" onclick="toggleLogin()">
         <i class="fa-solid fa-power-off"></i>
     </div>

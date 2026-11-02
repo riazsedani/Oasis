@@ -1,6 +1,7 @@
 function toggleLogin() {
     const modal = document.getElementById('login-modal');
-    if (document.getElementById('main-links').style.display !== 'flex') {
+    // Only toggle the modal if the user hasn't already successfully logged in
+    if (document.getElementById('protected-view').style.display !== 'flex') {
         modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
     }
 }
@@ -12,7 +13,8 @@ function handleLogin(event) {
     const passInput = document.getElementById('pass-input').value.trim();
     
     const modal = document.getElementById('login-modal');
-    const links = document.getElementById('main-links');
+    const publicView = document.getElementById('public-view');
+    const protectedView = document.getElementById('protected-view');
     const title = document.getElementById('profile-title');
     const subtitle = document.getElementById('profile-subtitle');
     const avatar = document.getElementById('avatar-box');
@@ -21,22 +23,22 @@ function handleLogin(event) {
     // --- ADMIN1 PROFILE (Your View) ---
     if (userInput === "Admin1" && passInput === "177013") {
         modal.style.display = 'none';
-        links.style.display = 'flex';
+        publicView.style.display = 'none';
+        protectedView.style.display = 'flex';
         
-        // Custom text & styling for you
-        title.innerText = "Admin Core // Oasis";
-        subtitle.innerText = "System Owner & Admin Leader";
+        title.innerText = "Admin // Oasis";
+        subtitle.innerText = "System Architect View";
         avatar.innerText = "A";
         body.classList.add('theme-admin');
     }
     // --- DEV1 PROFILE (Your Friend's Hacker View) ---
     else if (userInput === "Dev1n" && passInput === "170170") {
         modal.style.display = 'none';
-        links.style.display = 'flex';
+        publicView.style.display = 'none';
+        protectedView.style.display = 'flex';
         
-        // Custom text & styling for your friend
-        title.innerText = "Dev Terminal // Oasis";
-        subtitle.innerText = "Something Special.... maybe... defo special";
+        title.innerText = "Admin or someone special... yeah, defo special";
+        subtitle.innerText = "Lead Operator View";
         avatar.innerText = "D";
         body.classList.add('theme-dev');
     } 

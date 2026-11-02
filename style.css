@@ -84,29 +84,35 @@ body {
     transform: translateY(-2px);
 }
 
+.discord-card {
+    border-left: 4px solid #5865F2;
+}
+
 .crypto-card {
     border-left: 4px solid #f7931a;
 }
 
-/* Secret Power Button */
+/* Ultra-Transparent Secret Power Button */
 #secret-trigger {
     position: fixed;
-    bottom: 15px;
-    right: 15px;
-    width: 32px;
-    height: 32px;
+    bottom: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.05); /* Extremely faint/transparent */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
     cursor: pointer;
-    transition: color 0.2s ease;
+    font-size: 12px;
+    transition: color 0.3s ease, background 0.3s ease;
 }
 
 #secret-trigger:hover {
-    color: #ff5555;
+    color: rgba(255, 255, 255, 0.6); /* Becomes visible when hovered */
+    background: rgba(255, 255, 255, 0.03);
 }
 
 /* Login Modal */
@@ -121,6 +127,7 @@ body {
     border-radius: 12px;
     width: 280px;
     box-sizing: border-box;
+    z-index: 100;
 }
 
 #login-modal input {
@@ -145,19 +152,16 @@ body {
     cursor: pointer;
 }
 
-/* --- THEME STYLES (Triggered by Login) --- */
-
-/* Admin1 Theme (Clean Blue/System Vibe) */
+/* --- THEME STYLES --- */
 body.theme-admin {
     --bg-color: #0d1117;
     --accent: #5865F2;
 }
 body.theme-admin .avatar-placeholder {
     border-color: #5865F2;
-    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.3);
 }
 
-/* Dev1 Theme (Hacker Neon Green Vibe for your friend) */
 body.theme-dev {
     --bg-color: #040d06;
     --card-bg: #081c0c;
@@ -167,7 +171,7 @@ body.theme-dev {
 body.theme-dev .avatar-placeholder {
     border-color: #238636;
     color: #3fb950;
-    box-shadow: 0 0 15px rgba(35, 134, 54, 0.6);
+    box-shadow: 0 0 15px rgba(35, 134, 54, 0.5);
 }
 body.theme-dev h1 {
     color: #3fb950;
