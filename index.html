@@ -31,26 +31,65 @@
             <form onsubmit="handleLogin(event)">
                 <input type="text" id="user-input" placeholder="Username" required><br>
                 <input type="password" id="pass-input" placeholder="Access Key" required><br>
-                <button type="submit">Access Core</button>
+                <button type="submit">Log In</button>
             </form>
         </div>
 
+        <!-- PROTECTED VIEW: Appears AFTER successful login -->
         <div id="protected-view" class="links-stack" style="display: none;">
             <a href="https://discord.com/oauth2/authorize?client_id=1566699163142455316&permissions=2147551232&integration_type=0&scope=bot" target="_blank" class="link-card">
                 <i class="fa-brands fa-discord"></i> Invite Oasis Bot
             </a>
     
-            <a href="YOUR_CRYPTO_CHECKOUT_LINK" target="_blank" class="link-card crypto-card">
-                <i class="fa-solid fa-coins"></i> Buy Coins & VIP (Crypto)
+            <!-- Crypto Terminal Modal Trigger -->
+            <a href="javascript:void(0);" onclick="openCryptoModal()" class="link-card crypto-card">
+                <i class="fa-solid fa-coins"></i> Buy Coins & VIP (Crypto Terminal)
             </a>
 
-            <a href="https://riazsedani.github.io/Oasis/" target="_blank" class="link-card">
-                <i class="fa-solid fa-code"></i> GitHub Portfolio
+            <a href="https://github.com/riazsedani" target="_blank" class="link-card">
+                <i class="fa-solid fa-code"></i> GitHub
             </a>
 
             <a href="https://linktr.ee/notdebra" target="_blank" class="link-card">
                 <i class="fa-brands fa-linktree"></i> Coolest Shit
             </a>
+        </div>
+    </div>
+
+    <!-- HIGH-TIER CRYPTO CHECKOUT MODAL -->
+    <div id="crypto-modal" style="display: none;">
+        <div class="terminal-header">
+            <h3>SECURE IN-GAME ASSET GATEWAY</h3>
+            <span onclick="closeCryptoModal()" style="cursor:pointer; float:right;">&times;</span>
+        </div>
+        <!-- Inside your #crypto-modal in index.html -->
+        <div class="terminal-body">
+            <p>Select Package:</p>
+            <select id="coin-package" onchange="updateCryptoDetails()">
+                <option value="10000" data-amount="0.05 SOL" data-price="€10">10,000 Oasis Coins (0.05 SOL / €10)</option>
+                <option value="50000" data-amount="0.20 SOL" data-price="€40">50,000 Oasis Coins (0.20 SOL / €40)</option>
+                <option value="100000" data-amount="0.35 SOL" data-price="€70">100,000 Oasis Coins (0.35 SOL / €70)</option>
+                <option value="500000" data-amount="1.50 SOL" data-price="€300">5₀₀,₀₀₀ Oasis Coins (1.5₀ SOL / €3₀₀)</option>
+            </select>
+    
+            <!-- ADD THIS LINE SO THE DYNAMIC PRICING SCRIPT HAS A TARGET -->
+            <div id="package-pricing" style="font-family: monospace; font-size: 11px; color: #00d2ff; margin: 8px 0;">
+                Cost: 0.05 SOL (Approx. €10)
+            </div>
+    
+            <div class="wallet-box">
+                <p class="muted-text" style="font-size:11px; margin:0 0 5px 0;">Send exact amount to node:</p>
+                <code id="wallet-address">0x45aa14cfd0ca01ce1bfd5409610fd8b5ea9f4f9c</code>
+                <br>
+                <button onclick="copyWallet()" class="mini-btn">Copy Address</button>
+            </div>
+
+
+            <form onsubmit="submitTransaction(event)" style="margin-top: 10px;">
+                <input type="text" id="discord-id" placeholder="Your Discord User ID" required><br>
+                <input type="text" id="tx-hash" placeholder="Transaction Hash (TxID)" required><br>
+                <button type="submit" class="terminal-submit">Initialize Verification</button>
+            </form>
         </div>
     </div>
 

@@ -162,18 +162,143 @@ body.theme-admin .avatar-placeholder {
     box-shadow: 0 0 15px rgba(88, 101, 242, 0.3);
 }
 
+/* Dev1 Theme (Electric Blue to Hot Pink / Rose Neon Vibe) */
 body.theme-dev {
-    --bg-color: #040d06;
-    --card-bg: #081c0c;
-    --card-hover: #0f2d15;
-    --accent: #238636;
+    --bg-color: #09060f;
+    --card-bg: #150a1f;
+    --card-hover: #221032;
+    --accent: #ff007f;
 }
 body.theme-dev .avatar-placeholder {
-    border-color: #238636;
-    color: #3fb950;
-    box-shadow: 0 0 15px rgba(35, 134, 54, 0.5);
+    border-color: #ff007f;
+    color: #ff758c;
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+    background: linear-gradient(135deg, #1b0a2a, #2e0d3d);
 }
 body.theme-dev h1 {
-    color: #3fb950;
-    text-shadow: 0 0 8px rgba(63, 185, 80, 0.4);
+    background: linear-gradient(135deg, #00d2ff, #ff007f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 12px rgba(255, 0, 127, 0.3);
+}
+
+/* --- High-Tier Cyber Terminal Modal Styling (Electric Blue / Hot Pink) --- */
+#crypto-modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: #09060f;
+    border: 1px solid #ff007f;
+    box-shadow: 0 0 35px rgba(255, 0, 127, 0.25), inset 0 0 15px rgba(0, 210, 255, 0.05);
+    border-radius: 8px;
+    width: 380px;
+    padding: 24px;
+    box-sizing: border-box;
+    z-index: 200;
+    text-align: left;
+    animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalPop {
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.terminal-header h3 {
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #00d2ff, #ff007f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 0;
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+}
+
+.terminal-header span {
+    color: #8b949e;
+    transition: color 0.2s;
+}
+.terminal-header span:hover {
+    color: #fff;
+}
+
+.wallet-box {
+    background: #040207;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    padding: 12px;
+    border-radius: 6px;
+    margin: 14px 0;
+    text-align: center;
+    position: relative;
+}
+
+.wallet-box code {
+    font-family: monospace;
+    font-size: 11px;
+    color: #00d2ff;
+    word-break: break-all;
+    display: block;
+    margin-bottom: 8px;
+}
+
+#crypto-modal input, #crypto-modal select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    background: #040207;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-family: monospace;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#crypto-modal input:focus, #crypto-modal select:focus {
+    outline: none;
+    border-color: #ff007f;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+}
+
+.terminal-submit {
+    width: 100%;
+    padding: 11px;
+    background: linear-gradient(135deg, #00d2ff, #ff007f);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-family: monospace;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.1s;
+}
+
+.terminal-submit:hover {
+    filter: brightness(1.15);
+}
+.terminal-submit:active {
+    transform: scale(0.98);
+}
+
+.mini-btn {
+    background: #150a1f;
+    color: #c9d1d9;
+    border: 1px solid rgba(255, 0, 127, 0.3);
+    padding: 5px 12px;
+    font-size: 10px;
+    font-family: monospace;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.mini-btn:hover {
+    background: #221032;
+    border-color: #ff007f;
+    color: #fff;
 }

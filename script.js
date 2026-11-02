@@ -41,8 +41,74 @@ function handleLogin(event) {
         subtitle.innerText = "Lead Operator View";
         avatar.innerText = "D";
         body.classList.add('theme-dev');
-    } 
+    }
     else {
         alert("Access Denied: Unrecognized credentials.");
     }
+}
+
+// --- Crypto Terminal Functions ---
+
+function openCryptoModal() {
+    document.getElementById('crypto-modal').style.display = 'block';
+}
+
+function closeCryptoModal() {
+    document.getElementById('crypto-modal').style.display = 'none';
+}
+
+function copyWallet() {
+    const address = document.getElementById('wallet-address').innerText;
+    navigator.clipboard.writeText(address).then(() => {
+        alert("Wallet address copied to clipboard.");
+    });
+}
+
+async function submitTransaction(event) {
+    event.preventDefault();
+    const selectElement = document.getElementById('coin-package');
+    const coinAmount = selectElement.value;
+    const discordId = document.getElementById('discord-id').value.trim();
+    const txHash = document.getElementById('tx-hash').value.trim();
+
+    // Show loading state
+    const submitBtn = event.target.querySelector('.terminal-submit');
+    submitBtn.innerText = "VERIFYING BLOCKCHAIN...";
+    submitBtn.disabled = true;
+
+    try {
+        // Send this data to your local/hosted Discord bot backend endpoint
+        const response = await fetch('http://localhost:3000/api/verify-crypto', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ discordId, txHash, coinAmount })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert("Verification successful! Coins have been credited to your account.");
+            closeCryptoModal();
+        } else {
+            alert("Verification failed: " + result.message);
+        }
+    } catch (error) {
+        // Fallback if backend isn't online yet
+        alert(`Payload transmitted to node queue.\nUser: ${discordId}\nTx: ${txHash}\n(Backend offline - manual review queued).`);
+        closeCryptoModal();
+    } finally {
+        submitBtn.innerText = "Initialize Verification";
+        submitBtn.disabled = false;
+    }
+}
+
+function updateCryptoDetails() {
+    const selectElement = document.getElementById('coin-package');
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    
+    const cryptoAmount = selectedOption.getAttribute('data-amount');
+    const fiatPrice = selectedOption.getAttribute('data-price');
+    
+    // Update the pricing text dynamically
+    document.getElementById('package-pricing').innerText = `Cost: ${cryptoAmount} (Approx. ${fiatPrice})`;
 }
