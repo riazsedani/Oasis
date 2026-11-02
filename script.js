@@ -5,5 +5,5 @@ function revealLogin() {
 
 function handleLogin(event) {
     event.preventDefault();
-    alert("Authentication protocol initialized.");
+    alert("Login sequence initialized. Connect this to your secure backend.");
 }
